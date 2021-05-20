@@ -1,0 +1,251 @@
+.nav {
+  @include main;
+
+  margin: 0 auto;
+  background-color: $bg-dark;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 80px;
+  z-index: 2;
+
+  &__main, &__next-level, &__extra {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__point {
+    margin: 0;
+    padding: 0;
+    background-color: $bg-grey;
+    border-bottom: 1px solid $bg-dark;
+  }
+
+  &__link {
+    color: #fafafa;
+    text-decoration: none;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  &__next-level &__link {
+    @include second;
+  }
+
+  &__extra {
+    display: none;
+  }
+
+  &__points {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $bg-dark;
+
+    // &--open {
+    //   background-color: $bg-dark;
+    // }
+  }
+
+  &__points-second, &__points-third {
+    &--open {
+      background-color: $bg-dark;
+    }
+  }
+  
+  &__marker {
+    margin-left: 10px;
+
+    &--rotate {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__next-level {
+    display: none;
+
+    // &--change {
+    //   display: block;
+    // }
+  }
+
+  &__second-level--change, &__third-level--change {
+    display: block;
+  }
+}
+
+@include tablet {
+  .nav {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 80px;
+    z-index: 2;
+  }
+}
+
+@include desktop {
+  .nav {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+
+    &__extra {
+      display: block;
+    }
+
+    &__main, &__extra {
+      display: flex;
+    }
+
+    &__point {
+      background-color: $bg-dark;
+      border: none;
+    }
+
+    &__link {
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-right: 18px;
+      padding-left: 18px;
+
+      &:hover {
+        color: #eb5757;
+      }
+    }
+
+    &__points &__link {
+      padding-right: 9px;
+      margin-right: 0;
+    }
+
+    &__points &__marker {
+      margin-left: 0;
+      margin-right: 20px;
+    }
+
+    &__point {
+      &:nth-child(2) {
+        position: relative;
+      }
+    }
+
+    &__second-level {
+      display: block;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      z-index: 3;
+      width: 320px;
+    }
+
+    &__next-level &__link {
+      margin: 0;
+      padding: 0;
+      padding-top: 8px;
+      padding-bottom: 7px;
+      padding-left: 18px;
+
+      &:hover {
+        background-color: $bg-dark;
+        color: #fafafa;
+      }
+    }
+
+    &__next-level &__point {
+      background-color: $bg-grey;
+    }
+    
+    &__next-level &__point:not(:last-child) {
+      border-bottom: 1px solid rgba(#ffffff, 0.1);
+    }
+    
+    &__next-level &__point:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    &__points-third {
+      border-radius: 0 0 8px 8px;
+      border-bottom: 1px solid $bg-grey;
+    }
+
+    &__points-third:hover {
+      background-color: $bg-dark;
+    }
+
+    &__points-third &__link:first-child:hover {
+      border-radius: 0 0 8px 8px;
+    }
+
+    &__third-level {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 344px;
+      z-index: 3;
+      width: 179px;
+    }
+
+    &__third-level &__point:nth-child(1) {
+      border-radius: 8px 8px 0 0;
+    }
+
+    &__third-level &__link:hover {
+      border-radius: 8px;
+    }
+
+    // &__third-level &__link:last-child:hover {
+    //   border-radius: 0 0 8px 8px;
+    // }
+
+    // &__third-level &__link:first-child:hover {
+    //   border-radius: 8px 8px 0 0;
+    // }
+
+    &__next-level::before {
+      position: absolute;
+      background-image: url(../../img/drop-arrow.svg);
+      width: 28px;
+      height: 14px;
+      content: "";
+    }
+
+     &__second-level::before {
+      top: -14px;
+      left: 47px;
+    }
+
+    &__third-level::before {     
+      bottom: 6px;
+      left: -14px;
+      transform: rotate(-90deg);
+      height: 28px;
+    }   
+
+    &__next-level {
+      display: none;
+    }
+    
+    &__open-desktop:hover &__second-level {
+      display: block;
+    }
+
+    &__open-desktop:hover &__points-second &__marker {
+      transform: rotate(180deg);
+    }
+
+    &__open-desktop-next:hover &__third-level {
+      display: block;
+    }
+
+    &__open-desktop-next:hover &__points-third &__marker {
+      transform: rotate(180deg);
+    }
+  }
+}

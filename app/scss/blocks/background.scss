@@ -1,0 +1,39 @@
+
+// @media (min-width: $tablet) {
+//   .background {
+//     background: url(../img/alpaca_tablet.jpg) no-repeat center/cover;
+//   }
+// }
+
+// @media (min-width: $desktop) {
+//   .background {
+//     background: url(../img/alpaca_desktop.jpg) no-repeat center/cover;
+//   }
+// }
+
+.background {
+  &__current {
+    display: block;
+    // object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    position: relative;
+  }
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($bg-dark, 0.5); 
+    display: none;
+
+    &--visible {
+      display: block;
+    }
+  }
+}

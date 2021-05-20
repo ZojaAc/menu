@@ -1,0 +1,73 @@
+.header {
+  background-color: $bg-dark;
+  
+  &__main {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    flex-grow: 2;
+  }
+
+  &__nav {
+    display: none;
+
+    &--change {
+      display: block;
+    }
+  }
+}
+
+@include tablet {
+  .header {
+    &__main {
+      justify-content: space-around;
+    }
+
+    &__logo {
+      flex-grow: 0;
+      margin-right: auto;
+    }
+
+    &__burger {
+      margin-left: auto;      
+    }
+  }
+}
+
+@include desktop {
+  .header {
+    &__main {
+      justify-content: space-between;
+    }
+
+    &__wrapper {
+      position: relative;
+    }
+    
+    &__nav {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;  
+    }
+    
+    &__logo {
+      margin: 0;
+      margin-left: 5%;
+    }
+
+    &__phone {
+      margin: 0;
+      margin-right: 5%;
+    }
+
+    &__burger {
+      display: none;
+    }
+  }
+}

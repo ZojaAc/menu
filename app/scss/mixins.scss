@@ -1,0 +1,34 @@
+@mixin main {
+    @include font(18px, 24px); // можно добавлять жирность и др шрифт
+    color: #fafafa;
+}
+
+@mixin second {
+  @include font(16px, 24px);
+  color: #fafafa;  
+}
+
+// @mixin btn {
+//     @include font(18px, 24px, 500);
+//     color: #ffffff;    
+// }
+
+@mixin font($font-size: $font-size, $line-height: $line-height, $font-weight: null, $font-family: $basic-family) {
+    font: $font-weight #{$font-size}/#{$line-height} $font-family;    
+}
+
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content; // что значит запись и как этим еще можно пользоваться/назначение
+    }
+}
+@mixin tablet {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media (min-width: $mobile) {
+        @content;
+    }
+}

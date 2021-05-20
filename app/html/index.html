@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta, title, css -->
+  @@include('page/head-data.html')
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__wrapper">
+      <div class="header__main">
+        <div class="header__logo logo">
+          <img class="logo__img" src="../img/logo_img.svg" alt="logo-img" width="46" height="46">
+        </div>
+        <div class="header__phone phone">
+          <a class="phone__active" href="tel:+13212223333">
+            <img class="phone__img" src="../img/phone_img.svg" alt="phone-img" width="24" height="24">
+            <p class="phone__number">+1 (321) 222-33-33</p>
+          </a>        
+        </div>
+        <div class="header__burger burger">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </div> 
+      </div>
+      <div class="header__nav">
+        <nav class="nav">
+          <ul class="nav__main">
+            <li class="nav__point">
+              <a class="nav__link" href="#">Главная</a>
+            </li>
+            <li class="nav__point nav__open-desktop">
+              <div class="nav__points nav__points-second">
+                <a class="nav__link" href="#">Основное меню</a>
+                <img class="nav__marker" src="../img/dropdown.svg" width="8" height="6" alt="yellow-mark">
+              </div>
+              <ul class="nav__next-level nav__second-level">
+                <li class="nav__point">
+                  <a class="nav__link" href="#">Заказать вёрстку</a>
+                </li>
+                <li class="nav__point">
+                  <a class="nav__link" href="#">Отправить макет на проверку</a>
+                </li>
+                <li class="nav__point">
+                  <a class="nav__link" href="#">Хочу работать у вас</a>
+                </li>
+                <li class="nav__point nav__open-desktop-next">
+                  <div class="nav__points nav__points-third">
+                    <a class="nav__link nav__link-last" href="#">Есть предложение по работе с клиентами</a>
+                    <img class="nav__marker nav__marker-third" src="../img/dropdown.svg" width="8" height="6" alt="yellow-mark">
+                  </div>
+                  <ul class="nav__next-level nav__third-level">
+                    <li class="nav__point">
+                      <a class="nav__link" href="#">У меня есть оффер</a>
+                    </li>
+                    <li class="nav__point">
+                      <a class="nav__link" href="#">Сделать партнером</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav__extra">
+            <li class="nav__point">
+              <a class="nav__link" href="#">Наши сервисы</a>
+            </li>
+            <li class="nav__point">
+              <a class="nav__link" href="#">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+      </div>      
+    </div>
+  </header>
+  <section class="background">
+    <h1 class="background__title visually-hidden">Текущая заставка</h1>
+    <div class="background__img">
+      <picture>
+        <source media="(min-width: 1440px)" srcset="../img/alpaca_desktop.jpg">
+          <source media="(min-width: 768px)" srcset="../img/alpaca_tablet.jpg">
+            <img class="background__current" src="../img/alpaca_tablet.jpg" alt="current-photo">
+      </picture>
+      <div class="background__shadow"></div> 
+    </div>    
+  </section>
+  <script>
+    // открыть/закрыть меню при нажатии на бургер
+    const burgerBtn = document.querySelector('.burger');
+    const headerNav = document.querySelector('.header__nav');
+    const shadow = document.querySelector('.background__shadow');
+    burgerBtn.addEventListener('click', () => {
+      headerNav.classList.toggle('header__nav--change');
+      shadow.classList.toggle('background__shadow--visible');
+    });
+
+    // // проба повесить событие на две кнопки сразу
+    // // открыть/закрыть любой уровень меню
+    // const menuNextLevel = document.querySelector('.nav__points');
+    // const pointsNextLevel = document.querySelector('.nav__next-level');
+    // const marker = document.querySelector('.nav__marker');    
+    // menuNextLevel.addEventListener('click', forBothLevel());
+    // function forBothLevel() {
+    //   pointsNextLevel.classList.toggle('nav__next-level--change');
+    //   // marker.style.transform = 'rotate(180deg)';
+    //   marker.classList.toggle('nav__marker--rotate');
+    // };
+    // добавить цикл и выборку всех элементов по классу?
+
+    // открыть/закрыть второй уровень меню
+    const menuSecondLevel = document.querySelector('.nav__points-second');
+    const pointsSecondLevel = document.querySelector('.nav__second-level');
+    const marker = document.querySelector('.nav__marker');    
+    // let points = document.querySelector('.nav__points');
+    menuSecondLevel.addEventListener('click', openSecondMenu);
+    function openSecondMenu() {
+      pointsSecondLevel.classList.toggle('nav__second-level--change');
+      // marker.style.transform = 'rotate(180deg)';
+      marker.classList.toggle('nav__marker--rotate');
+      menuSecondLevel.classList.toggle('nav__points-second--open');
+    };
+    
+    // открыть/закрыть третий уровень меню
+    const menuThirdLevel = document.querySelector('.nav__points-third');
+    const pointsThirdLevel = document.querySelector('.nav__third-level');
+    const markerThird = document.querySelector('.nav__marker-third');
+    menuThirdLevel.addEventListener('click', openThirdMenu);
+    function openThirdMenu() {
+      pointsThirdLevel.classList.toggle('nav__third-level--change');
+      markerThird.classList.toggle('nav__marker--rotate');
+      menuThirdLevel.classList.toggle('nav__points-third--open');
+    };
+
+    // как объединить два клика в один метод???? и не добавлять классы одинаковым элементам
+  
+    // на десктопе открытие меню при наведении
+    // const desktopMenu2Level = document.querySelector('.nav__points-second');
+    // const desktopPoint2Level = document.querySelector('.nav__second-level');
+    // const desktopMarker = document.querySelector('.nav__marker');    
+    // desktopMenu2Level.addEventListener('mouseover', openSecondMenu);
+    // function openSecondMenu() {
+    //   pointsSecondLevel.classList.toggle('nav__second-level--change');
+    //   // marker.style.transform = 'rotate(180deg)';
+    //   marker.classList.toggle('nav__marker--rotate');
+    // };
+
+    // замена текста в меню на многоточие
+    window.onresize = () => {
+    if (screen.availWidth > 1024) {
+      let navLink = document.querySelector('.nav__link-last');
+      let textLink = navLink.textContent;
+      let newText = 'Есть предложение по работе с кл...';
+      navLink.textContent = newText;
+      }
+    };
+    // как написать зависимость от переполнения строки, а не просто замена части текста
+    // почему зависимость от ширины экрана работает только раз, второй уже нет
+    
+  </script>
+      
+  <!-- <script src="js/main.js"></script>  -->
+  <!-- // консоль ругается на содержимое -->
+</body>
+
+</html>

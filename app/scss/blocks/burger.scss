@@ -1,0 +1,11 @@
+.burger {
+  padding: 20px;
+  
+  &__line {
+    display: block;
+    background-color: #F2994A;
+    height: 2px;
+    width: 22px;
+    margin-bottom: 4px;
+  }  
+}
