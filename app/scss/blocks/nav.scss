@@ -178,6 +178,10 @@
       background-color: $bg-grey;
     }
 
+    &__list &__point:last-child {
+      border-bottom: none;
+    }
+
     &__list-wrap {
       position: static;
       opacity: 1;
