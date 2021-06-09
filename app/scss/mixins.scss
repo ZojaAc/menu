@@ -8,27 +8,22 @@
   color: #fafafa;  
 }
 
-// @mixin btn {
-//     @include font(18px, 24px, 500);
-//     color: #ffffff;    
-// }
-
 @mixin font($font-size: $font-size, $line-height: $line-height, $font-weight: null, $font-family: $basic-family) {
     font: $font-weight #{$font-size}/#{$line-height} $font-family;    
 }
 
 @mixin desktop {
-    @media (min-width: $desktop) {
-        @content; // что значит запись и как этим еще можно пользоваться/назначение
+    @media (max-width: $desktop) {
+        @content; 
     }
 }
 @mixin tablet {
-    @media (min-width: $tablet) {
+    @media (max-width: $tablet) {
         @content;
     }
 }
 @mixin mobile {
-    @media (min-width: $mobile) {
+    @media (max-width: $mobile) {
         @content;
     }
 }

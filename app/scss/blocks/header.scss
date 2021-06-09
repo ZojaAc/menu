@@ -1,73 +1,60 @@
 .header {
   background-color: $bg-dark;
-  
-  &__main {
+
+  &__wrapper {
+    margin: 0 auto;
+    max-width: 1196px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  &__burger {
+    display: none;
   }
 
   &__logo {
-    flex-grow: 2;
-  }
-
-  &__nav {
-    display: none;
-
-    &--change {
-      display: block;
-    }
+    cursor: pointer;
   }
 }
 
 @include tablet {
   .header {
-    &__main {
-      justify-content: space-around;
+    &__wrapper {
+      max-width: 724px;
     }
-
-    &__logo {
-      flex-grow: 0;
-      margin-right: auto;
+    
+    &__nav {
+      position: fixed;
+      top: 80px;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      background-color: $bg-dark;
+      overflow: hidden;
+      overflow-y: auto; // задаем вертикальную прокрутку для возможного переполнения блока
     }
 
     &__burger {
-      margin-left: auto;      
+      display: block;
     }
   }
 }
 
-@include desktop {
+@include mobile {
   .header {
-    &__main {
-      justify-content: space-between;
+    &__wrapper {
+      max-width: 354px;
+      padding-left: 9px;
+      padding-right: 9px;
     }
 
-    &__wrapper {
-      position: relative;
-    }
-    
     &__nav {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;  
-    }
-    
-    &__logo {
-      margin: 0;
-      margin-left: 5%;
+      width: 100%;
     }
 
     &__phone {
-      margin: 0;
-      margin-right: 5%;
-    }
-
-    &__burger {
-      display: none;
+      margin-left: auto;
     }
   }
 }

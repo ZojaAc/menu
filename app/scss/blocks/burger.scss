@@ -9,3 +9,9 @@
     margin-bottom: 4px;
   }  
 }
+
+@include tablet {
+  .burger {
+    padding-right: 0;
+  }
+}

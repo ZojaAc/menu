@@ -1,0 +1,17 @@
+@include tablet {
+  .shadow {
+    background-color: rgba($bg-dark, 0.5);
+    top: 80px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;    
+
+    &-js {
+      &.--active {
+        display: block;
+      }
+    }
+  }
+} 

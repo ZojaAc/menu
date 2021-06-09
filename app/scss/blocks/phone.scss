@@ -1,37 +1,25 @@
 .phone {
+  padding: 8px;
+
   &__number {
     @include main;
 
     font-weight: 500;
     color: #ffffff;
+    margin-left: 10px;
   }
 
   &__active {
     text-decoration: none;
-  }
-
-  &__img {
-    margin: 8px;
-  }
+    display: flex;
+    align-items: center;
+  } 
 }
 
-@media (max-width: $mobile) {
+@include mobile {
   .phone {
     &__number {
       display: none;
     }
   }
-}
-
-@media (min-width: 376px) {
-  .phone {
-    &__active {
-      display: flex;
-      align-items: center;
-    }
-
-    &__number {
-      margin-left: 10px;
-    }
-  }
-}
+} 

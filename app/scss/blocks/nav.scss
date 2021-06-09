@@ -1,251 +1,273 @@
 .nav {
   @include main;
 
-  margin: 0 auto;
-  background-color: $bg-dark;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  right: 0;
-  top: 80px;
-  z-index: 2;
-
-  &__main, &__next-level, &__extra {
-    margin: 0;
-    padding: 0;
+  &__list {
+    display: flex;
     list-style: none;
   }
 
-  &__point {
-    margin: 0;
-    padding: 0;
-    background-color: $bg-grey;
-    border-bottom: 1px solid $bg-dark;
-  }
-
   &__link {
-    color: #fafafa;
-    text-decoration: none;
     display: block;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    color: $main-color;
+    text-decoration: none;
+    padding: 8px 18px;
+
+    &:hover {
+      color: $main-hover;
+    }
+
+    // замена текста переполнения на многоточие
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  &__next-level &__link {
-    @include second;
+  &__point:not(:last-child) {
+    margin-right: 40px;
   }
 
-  &__extra {
-    display: none;
-  }
-
-  &__points {
+  // желтый треугольник
+  &__block-drop {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $bg-dark;
 
-    // &--open {
-    //   background-color: $bg-dark;
-    // }
-  }
-
-  &__points-second, &__points-third {
-    &--open {
-      background-color: $bg-dark;
-    }
-  }
-  
-  &__marker {
-    margin-left: 10px;
-
-    &--rotate {
-      transform: rotate(180deg);
+    .nav__drop-third {
+      margin-right: 18px;
     }
   }
 
-  &__next-level {
-    display: none;
+  // поведение второго/третьего уровня меню на desktop
+  &__list-wrap {
+    position: absolute;
+    transition: opacity 200ms ease, transform 200ms ease;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
 
-    // &--change {
-    //   display: block;
-    // }
+    // направляющие серые треугольники выпадающего меню
+    &::before {
+      content: '';
+      border: 14px solid transparent;
+      width: 0;
+      height: 0;
+      border-top: 0;
+      border-bottom-color: $bg-grey;
+      position: absolute;
+      top: 6px;
+      left: 47px;
+    }
+
+    &--second {
+      padding-top: 20px;
+      width: 320px;
+    }
+
+    &--third {
+      width: calc(179+22+20)px;
+      padding-left: 20px;
+      left: 100%;
+      bottom: 0;
+
+      &::before {
+        transform: rotate(-90deg);
+        left: -1px;
+        top: 46px;
+      }
+    }    
   }
 
-  &__second-level--change, &__third-level--change {
+  // оформление второго/третьего уровня меню на desktop
+  &__list--second, &__list--third {
     display: block;
+    background-color: $bg-grey;
+    border-radius: 0 0 8px 8px;
+
+    @include second;
+
+    .nav__point {
+      margin-right: 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $line;
+      }
+
+      &:last-child {
+        margin-right: 0;
+        border-bottom: 1px solid $bg-grey;
+        border-radius: 0 0 8px 8px;
+
+        &:hover {
+          border-bottom-color: $bg-dark;
+        }
+      }
+    }
+  }
+}
+
+// поведение второго/третьего уровня меню на desktop
+@media (min-width: $desktop) {
+  .nav {
+    &__open-list {
+      position: relative;
+    
+      &:hover > .nav__list-wrap {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    
+      &:hover .nav__js-second .nav__drop {
+        transform: rotate(180deg);
+      }
+    
+      &:last-child:hover .nav__drop-third {
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__list--second, &__list--third {
+      .nav__link {
+        padding-bottom: 7px;
+  
+        &:hover {
+          background-color: $bg-dark;
+          color: $main-color;
+        }
+      }
+    }
+
+    &__list--third {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      .nav__point:first-child .nav__link:hover { 
+        border-radius: 8px 8px 0 0;    
+      }  
+
+      .nav__point:last-child .nav__link:hover { 
+        border-radius: 0 0 8px 8px;    
+      }  
+    }
+
+    &__list--second .nav__block-drop .nav__link {
+      padding-right: 14px;
+    }
+
+    &__list--second {
+      .nav__block-drop .nav__link:hover {
+        border-radius: 0 0 8px 8px;
+      }    
+      
+      .nav__block-drop:hover {
+        background-color: $bg-dark;
+        border-radius: 0 0 8px 8px;   
+      }
+    }
   }
 }
 
 @include tablet {
   .nav {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    right: 0;
-    top: 80px;
-    z-index: 2;
-  }
-}
-
-@include desktop {
-  .nav {
-    position: static;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-
-    &__extra {
+    &__list {
       display: block;
     }
 
-    &__main, &__extra {
-      display: flex;
+    &__list &__point {
+      margin-right: 0;
+      border-bottom: 1px solid $bg-dark;
+      background-color: $bg-grey;
     }
 
-    &__point {
-      background-color: $bg-dark;
-      border: none;
+    &__list-wrap {
+      position: static;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+      padding: 0;
+      display: none;
+
+      &--second, &--third {
+        width: 100%;
+
+        .nav__link {
+          padding: 20px;
+        }
+      }
+
+      &::before {
+        display: none;
+      }
     }
 
     &__link {
-      margin-left: 20px;
-      margin-right: 20px;
-      padding-right: 18px;
-      padding-left: 18px;
-
-      &:hover {
-        color: #eb5757;
-      }
-    }
-
-    &__points &__link {
-      padding-right: 9px;
-      margin-right: 0;
-    }
-
-    &__points &__marker {
-      margin-left: 0;
-      margin-right: 20px;
-    }
-
-    &__point {
-      &:nth-child(2) {
-        position: relative;
-      }
-    }
-
-    &__second-level {
-      display: block;
-      position: absolute;
-      top: 72px;
-      left: 0;
-      z-index: 3;
-      width: 320px;
-    }
-
-    &__next-level &__link {
-      margin: 0;
-      padding: 0;
-      padding-top: 8px;
-      padding-bottom: 7px;
-      padding-left: 18px;
-
-      &:hover {
-        background-color: $bg-dark;
-        color: #fafafa;
-      }
-    }
-
-    &__next-level &__point {
+      padding: 20px;
       background-color: $bg-grey;
-    }
-    
-    &__next-level &__point:not(:last-child) {
-      border-bottom: 1px solid rgba(#ffffff, 0.1);
-    }
-    
-    &__next-level &__point:last-child {
-      border-radius: 0 0 8px 8px;
+
+      &:hover {
+        color: $main-color;
+      }
     }
 
-    &__points-third {
-      border-radius: 0 0 8px 8px;
-      border-bottom: 1px solid $bg-grey;
+    &__block-drop .nav__link {
+      padding-right: 9px;
     }
 
-    &__points-third:hover {
-      background-color: $bg-dark;
+    &__list--second .nav__block-drop .nav__link {
+      padding-right: 9px;
     }
 
-    &__points-third &__link:first-child:hover {
-      border-radius: 0 0 8px 8px;
+    &__list--second, &__list--third {
+      border-radius: 0;
+
+      .nav__point {
+        &:last-child {
+          border-radius: 0;
+        }
+      }  
     }
 
-    &__third-level {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 344px;
-      z-index: 3;
-      width: 179px;
+    &__list-wrap .nav__list--second, &__list-wrap .nav__list--third {
+      .nav__point {
+        border-bottom-color: $bg-dark;
+      }
     }
 
-    &__third-level &__point:nth-child(1) {
-      border-radius: 8px 8px 0 0;
-    }
-
-    &__third-level &__link:hover {
-      border-radius: 8px;
-    }
-
-    // &__third-level &__link:last-child:hover {
-    //   border-radius: 0 0 8px 8px;
-    // }
-
-    // &__third-level &__link:first-child:hover {
-    //   border-radius: 8px 8px 0 0;
-    // }
-
-    &__next-level::before {
-      position: absolute;
-      background-image: url(../../img/drop-arrow.svg);
-      width: 28px;
-      height: 14px;
-      content: "";
-    }
-
-     &__second-level::before {
-      top: -14px;
-      left: 47px;
-    }
-
-    &__third-level::before {     
-      bottom: 6px;
-      left: -14px;
-      transform: rotate(-90deg);
-      height: 28px;
+    // открытие/закрытие второго/третьего уровня меню
+    &__list-wrap--second, &__list-wrap--third {
+      &.--active {
+        display: block;
+      }
     }   
 
-    &__next-level {
-      display: none;
-    }
-    
-    &__open-desktop:hover &__second-level {
-      display: block;
+    &__drop, &__drop-third {
+      &.--rotate {
+        transform: rotate(180deg);
+      }
+    }   
+
+    &__js-second, &__js-third {
+      &.--change {
+        background-color: $bg-dark;
+      }
     }
 
-    &__open-desktop:hover &__points-second &__marker {
-      transform: rotate(180deg);
+    &__js-link, &__js-link-th {
+      &.--change {
+        background-color: $bg-dark;
+      }
     }
 
-    &__open-desktop-next:hover &__third-level {
-      display: block;
-    }
+    // открытие всего меню на планшете и меньше, при нажатии на бургер
+    &-js {
+      transition: opacity 1000ms ease, transform 500ms ease;
+      opacity: 0;
+      transform: translateX(100%);
+      z-index: 2;
 
-    &__open-desktop-next:hover &__points-third &__marker {
-      transform: rotate(180deg);
+      &.--active {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-  }
+  } 
 }
