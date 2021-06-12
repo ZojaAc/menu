@@ -4,6 +4,8 @@
   &__wrapper {
     margin: 0 auto;
     max-width: 1196px;
+    padding-left: 22px;
+    padding-right: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,10 +22,6 @@
 
 @include tablet {
   .header {
-    &__wrapper {
-      max-width: 724px;
-    }
-    
     &__nav {
       position: fixed;
       top: 80px;
@@ -44,9 +42,8 @@
 @include mobile {
   .header {
     &__wrapper {
-      max-width: 354px;
-      padding-left: 9px;
-      padding-right: 9px;
+      padding-left: 19px;
+      padding-right: 19px;
     }
 
     &__nav {

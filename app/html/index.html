@@ -67,19 +67,19 @@
     const headerNav = document.querySelector('.nav-js');
     const shadow = document.querySelector('.shadow-js');
     burger.addEventListener('click', () => {
-      headerNav.classList.toggle('--active');
-      shadow.classList.toggle('--active');
+      headerNav.classList.toggle('js-active');
+      shadow.classList.toggle('js-active');
       if(headerNav.classList.contains('nav-js')) {
-        navWrapSec.classList.remove('--active');
-        navDrop.classList.remove('--rotate');
-        levelSec.classList.remove('--change');
-        navLink.classList.remove('--change');
+        navWrapSec.classList.remove('js-active');
+        navDrop.classList.remove('js-rotate');
+        levelSec.classList.remove('js-change');
+        navLink.classList.remove('js-change');
       }
       if(navWrapSec.classList.contains('nav__list-wrap--second')) {
-        navWrapThird.classList.remove('--active');
-        navDropT.classList.remove('--rotate');
-        levelTh.classList.remove('--change');
-        navLinkTh.classList.remove('--change');
+        navWrapThird.classList.remove('js-active');
+        navDropT.classList.remove('js-rotate');
+        levelTh.classList.remove('js-change');
+        navLinkTh.classList.remove('js-change');
       }
     });
 
@@ -89,13 +89,13 @@
     const navDrop = document.querySelector('.nav__drop');
     const navLink = document.querySelector('.nav__js-link');
     levelSec.addEventListener('click', () => {
-      navWrapSec.classList.toggle('--active');
-      navDrop.classList.toggle('--rotate');
-      levelSec.classList.toggle('--change');
-      navLink.classList.toggle('--change');
+      navWrapSec.classList.toggle('js-active');
+      navDrop.classList.toggle('js-rotate');
+      levelSec.classList.toggle('js-change');
+      navLink.classList.toggle('js-change');
       if(navWrapSec.classList.contains('nav__list-wrap--second')) {
-        navWrapThird.classList.remove('--active');
-        navDropT.classList.remove('--rotate');
+        navWrapThird.classList.remove('js-active');
+        navDropT.classList.remove('js-rotate');
       }
     });
 
@@ -105,10 +105,10 @@
     const navDropT = document.querySelector('.nav__drop-third');
     const navLinkTh = document.querySelector('.nav__js-link-th');
     levelTh.addEventListener('click', () => {
-      navWrapThird.classList.toggle('--active');
-      navDropT.classList.toggle('--rotate');
-      levelTh.classList.toggle('--change');
-      navLinkTh.classList.toggle('--change');
+      navWrapThird.classList.toggle('js-active');
+      navDropT.classList.toggle('js-rotate');
+      levelTh.classList.toggle('js-change');
+      navLinkTh.classList.toggle('js-change');
     });
 
   </script>  

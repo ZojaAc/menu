@@ -93,12 +93,8 @@
 
       &:last-child {
         margin-right: 0;
-        border-bottom: 1px solid $bg-grey;
+        border-bottom: 1px solid inherit;
         border-radius: 0 0 8px 8px;
-
-        &:hover {
-          border-bottom-color: $bg-dark;
-        }
       }
     }
   }
@@ -238,25 +234,25 @@
 
     // открытие/закрытие второго/третьего уровня меню
     &__list-wrap--second, &__list-wrap--third {
-      &.--active {
+      &.js-active {
         display: block;
       }
     }   
 
     &__drop, &__drop-third {
-      &.--rotate {
+      &.js-rotate {
         transform: rotate(180deg);
       }
     }   
 
     &__js-second, &__js-third {
-      &.--change {
+      &.js-change {
         background-color: $bg-dark;
       }
     }
 
     &__js-link, &__js-link-th {
-      &.--change {
+      &.js-change {
         background-color: $bg-dark;
       }
     }
@@ -268,7 +264,7 @@
       transform: translateX(100%);
       z-index: 2;
 
-      &.--active {
+      &.js-active {
         opacity: 1;
         transform: translateX(0);
       }

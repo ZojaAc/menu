@@ -7,6 +7,10 @@
     font-weight: 500;
     color: #ffffff;
     margin-left: 10px;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__active {
@@ -15,11 +19,3 @@
     align-items: center;
   } 
 }
-
-@include mobile {
-  .phone {
-    &__number {
-      display: none;
-    }
-  }
-} 

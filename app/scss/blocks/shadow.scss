@@ -8,10 +8,8 @@
     height: 100%;
     display: none;    
 
-    &-js {
-      &.--active {
-        display: block;
-      }
+    &.js-active {
+      display: block;
     }
   }
 } 
