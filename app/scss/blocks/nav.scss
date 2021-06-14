@@ -234,25 +234,25 @@
 
     // открытие/закрытие второго/третьего уровня меню
     &__list-wrap--second, &__list-wrap--third {
-      &.__active {
+      &._active {
         display: block;
       }
     }   
 
     &__drop, &__drop-third {
-      &.__rotate {
+      &._rotate {
         transform: rotate(180deg);
       }
     }   
 
     &__js-second, &__js-third {
-      &.__change {
+      &._change {
         background-color: $bg-dark;
       }
     }
 
     &__js-link, &__js-link-th {
-      &.__change {
+      &._change {
         background-color: $bg-dark;
       }
     }
@@ -264,7 +264,7 @@
       transform: translateX(100%);
       z-index: 2;
 
-      &.__active {
+      &._active {
         opacity: 1;
         transform: translateX(0);
       }
