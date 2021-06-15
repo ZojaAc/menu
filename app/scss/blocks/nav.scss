@@ -112,7 +112,7 @@
         pointer-events: auto;
       }
     
-      &:hover .nav__js-second .nav__drop {
+      &:hover .nav__block-drop .nav__drop {
         transform: rotate(180deg);
       }
     
@@ -245,29 +245,27 @@
       }
     }   
 
-    &__js-second, &__js-third {
+    &__block-drop-sec, &__block-drop-th {
       &._change {
         background-color: $bg-dark;
       }
     }
 
-    &__js-link, &__js-link-th {
+    &__link-sec, &__link-th {
       &._change {
         background-color: $bg-dark;
       }
     }
 
     // открытие всего меню на планшете и меньше, при нажатии на бургер
-    &-js {
-      transition: opacity 1000ms ease, transform 500ms ease;
-      opacity: 0;
-      transform: translateX(100%);
-      z-index: 2;
+    transition: opacity 1000ms ease, transform 500ms ease;
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 2;
 
-      &._active {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    &._active {
+      opacity: 1;
+      transform: translateX(0);
     }
   } 
 }
