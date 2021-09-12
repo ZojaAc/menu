@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Document</title><link rel="stylesheet" href="css/main.css"></head><body class="background"><header class="header"><div class="header__wrapper"><div class="header__logo logo"><img class="logo__img" src="img/logo_img.svg" alt="logo-img" width="46" height="46"></div><div class="header__nav nav nav-js"><ul class="nav__list nav__list--first"><li class="nav__point"><a class="nav__link" href="#">Главная</a></li><li class="nav__point nav__open-list"><div class="nav__block-drop nav__block-drop-sec nav__js-second"><a class="nav__link nav__link-sec nav__js-link" href="#">Основное меню</a> <img class="nav__drop" src="img/dropdown.svg" width="8" height="6" alt="yellow-mark"></div><div class="nav__list-wrap nav__list-wrap--second"><ul class="nav__list nav__list--second"><li class="nav__point"><a class="nav__link" href="#">Заказать вёрстку</a></li><li class="nav__point"><a class="nav__link" href="#">Отправить макет на проверку</a></li><li class="nav__point"><a class="nav__link" href="#">Хочу работать у вас</a></li><li class="nav__point nav__open-list"><div class="nav__block-drop nav__block-drop-th nav__js-third"><a class="nav__link nav__link-th nav__js-link-th" href="#">Есть предложение по работе с клиентами</a> <img class="nav__drop nav__drop-third" src="img/dropdown.svg" width="8" height="6" alt="yellow-mark"></div><div class="nav__list-wrap nav__list-wrap--third"><ul class="nav__list nav__list--third"><li class="nav__point"><a class="nav__link" href="#">У меня есть оффер</a></li><li class="nav__point"><a class="nav__link" href="#">Сделать партнером</a></li></ul></div></li></ul></div></li><li class="nav__point"><a class="nav__link" href="#">Наши сервисы</a></li><li class="nav__point"><a class="nav__link" href="#">Контакты</a></li></ul></div><div class="header__phone phone"><a class="phone__active" href="tel:+13212223333"><img class="phone__img" src="img/phone_img.svg" alt="phone-img" width="24" height="24"> <span class="phone__number">+1 (321) 222-33-33</span></a></div><div class="header__burger burger burger-js"><span class="burger__line"></span> <span class="burger__line"></span> <span class="burger__line"></span></div></div></header><div class="shadow shadow-js"></div><script>// открыть/закрыть меню на планшете и меньше шириной, при нажатии на бургер
+    const burger = document.querySelector('.burger-js');
+    const headerNav = document.querySelector('.nav-js');
+    const shadow = document.querySelector('.shadow-js');
+    burger.addEventListener('click', () => {
+      headerNav.classList.toggle('_active');
+      shadow.classList.toggle('_active');
+      if(headerNav.classList.contains('nav-js')) {
+        navWrapSec.classList.remove('_active');
+        navDrop.classList.remove('_rotate');
+        levelSec.classList.remove('_change');
+        navLink.classList.remove('_change');
+      }
+      if(navWrapSec.classList.contains('nav__list-wrap--second')) {
+        navWrapThird.classList.remove('_active');
+        navDropT.classList.remove('_rotate');
+        levelTh.classList.remove('_change');
+        navLinkTh.classList.remove('_change');
+      }
+    });
+
+    // открыть/закрыть второй уровень меню
+    const levelSec = document.querySelector('.nav__js-second');
+    const navWrapSec = document.querySelector('.nav__list-wrap--second');
+    const navDrop = document.querySelector('.nav__drop');
+    const navLink = document.querySelector('.nav__js-link');
+    levelSec.addEventListener('click', () => {
+      navWrapSec.classList.toggle('_active');
+      navDrop.classList.toggle('_rotate');
+      levelSec.classList.toggle('_change');
+      navLink.classList.toggle('_change');
+      if(navWrapSec.classList.contains('nav__list-wrap--second')) {
+        navWrapThird.classList.remove('_active');
+        navDropT.classList.remove('_rotate');
+      }
+    });
+
+    // открыть/закрыть третий уровень меню
+    const levelTh = document.querySelector('.nav__js-third');
+    const navWrapThird = document.querySelector('.nav__list-wrap--third');
+    const navDropT = document.querySelector('.nav__drop-third');
+    const navLinkTh = document.querySelector('.nav__js-link-th');
+    levelTh.addEventListener('click', () => {
+      navWrapThird.classList.toggle('_active');
+      navDropT.classList.toggle('_rotate');
+      levelTh.classList.toggle('_change');
+      navLinkTh.classList.toggle('_change');
+    });</script><!-- <script src="js/main.js"></script>  --></body></html>

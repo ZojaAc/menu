@@ -20,7 +20,7 @@ function html() {
         .pipe(htmlmin({ collapseWhitespace: true }))
         //раскоментрировать если нужен webp внутри тега picture
         // .pipe(webpHTML())
-        .pipe(dest('./build'))
+        .pipe(dest('./docs'))
 }
 
 function scss() {
@@ -28,7 +28,7 @@ function scss() {
         .pipe(sass())
         .pipe(cleanCSS({ level: 2 }))
         .pipe(replace(/^\.\.\//g, ''))
-        .pipe(dest('build/css'))
+        .pipe(dest('docs/css'))
         .pipe(sass().on('error', sass.logError))
 };
 
@@ -38,7 +38,7 @@ function js() {
             prefix: '@@'
         }))
         .pipe(uglify())
-        .pipe(dest('build/js'))
+        .pipe(dest('docs/js'))
 };
 
 function img() {
@@ -52,18 +52,18 @@ function img() {
             ]
         }))
         //раскоментрировать если нужен webp
-        // .pipe(dest('build/img'))
+        // .pipe(dest('docs/img'))
         // .pipe(webp({ quality: 70 }))
-        .pipe(dest('build/img'))
+        .pipe(dest('docs/img'))
 };
 
 function fonts() {
     return src('app/fonts/**/*')
-        .pipe(dest('build/fonts'))
+        .pipe(dest('docs/fonts'))
 };
 
 function clear() {
-    return del('build')
+    return del('docs')
 };
 
 function serve() {
@@ -71,7 +71,7 @@ function serve() {
         port: 3010,
         reloadOnRestart: true,
         server: {
-            baseDir: './build',
+            baseDir: './docs',
             directory: true
         }
     });
@@ -84,6 +84,6 @@ function serve() {
 };
 
 
-exports.build = series(clear, scss, js, img, fonts, html)
+exports.docs = series(clear, scss, js, img, fonts, html)
 exports.watch = series(clear, scss, js, img, fonts, html, serve)
 exports.clear = clear;
