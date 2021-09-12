@@ -1,9 +1,9 @@
 .background {
-  background: url(../../img/alpaca_desktop.jpg) no-repeat top 80px center/cover;
+  background: url(../img/alpaca_desktop.jpg) no-repeat top 80px center/cover;
   min-height: 100vh;
 }
 
 @include tablet {
-  background: url(../../img/alpaca_tablet.jpg) no-repeat top 80px center/cover;
+  background: url(../img/alpaca_tablet.jpg) no-repeat top 80px center/cover;
   min-height: 100vh;
 }
